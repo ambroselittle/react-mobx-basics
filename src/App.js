@@ -4,12 +4,18 @@ import logo from "./logo.svg";
 import "./App.css";
 import PersonDetails from "./components/strategy";
 import PersonEditor from "./components/personEditor";
+import {
+  DateTimeEditor,
+  dateTimeEditorStore
+} from "./components/dateTimeEditor";
 
 import PeopleStore from "./models/peopleStore";
+import { DateTimeEditorStore } from "./components/dateTimeEditor";
 
 @observer
 class App extends Component {
   peopleStore = new PeopleStore();
+  dateTimeEditorStore = new DateTimeEditorStore(this.peopleStore, "today");
 
   componentDidMount() {
     this.peopleStore.load();
@@ -38,6 +44,7 @@ class App extends Component {
             <PersonEditor person={this.peopleStore.editPerson} />
           )}
         </div>
+        <DateTimeEditor store={this.dateTimeEditorStore} />
       </div>
     );
   }

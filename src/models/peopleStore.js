@@ -6,6 +6,7 @@ export default class PeopleStore {
 
   @observable pokedPerson;
   @observable editPerson;
+  @observable today;
 
   @action
   poke = person => {
